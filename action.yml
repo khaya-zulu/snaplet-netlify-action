@@ -2,7 +2,7 @@ name: Netlify Preview Deployments
 
 author: Snaplet
 
-description: Trigger Netlify preview deployments when you want to integrate with external services smoothly.
+description: Trigger Netlify to stop Deployments
 
 runs:
   using: composite
