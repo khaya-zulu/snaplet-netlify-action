@@ -9,4 +9,4 @@ runs:
   steps:
     - name: Deploy
       shell: bash
-      run: "node -e 'process.exit($CONTEXT === `deploy-preview` ? 0 : 1)'"
+      run: "node -e 'process.exit(process.env.CONTEXT === `deploy-preview` ? 0 : 1)'"
