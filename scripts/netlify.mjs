@@ -1,0 +1,11 @@
+export const netlify = (url, options = {}) =>
+  fetch(
+    `https://api.netlify.com/api/v1/${url}/sites/${process.env.NETLIFY_SITE_ID}`,
+    {
+      ...options,
+      headers: {
+        Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => res.json());

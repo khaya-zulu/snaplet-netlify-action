@@ -1,0 +1,12 @@
+name: Netlify Preview Deployments
+
+author: Snaplet
+
+description: Trigger Netlify preview deployments when you want to integrate with external services smoothly.
+
+runs:
+  using: composite
+  steps:
+    - name: Deploy
+      shell: bash
+      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/deploy.mjs
