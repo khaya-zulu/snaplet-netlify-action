@@ -15,4 +15,4 @@ runs:
   steps:
     - name: Set env vars
       shell: bash
-      run: CONTEXT=${{ inputs.context }} node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/env.mjs
+      run: CONTEXT="${{ inputs.context }}" node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/env.mjs
