@@ -28,3 +28,8 @@ runs:
       name: Deploy
       shell: bash
       run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/deploy.mjs
+
+    - if: ${{ inputs.delete == 'true' }}
+      name: Delete
+      shell: bash
+      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/delete.mjs

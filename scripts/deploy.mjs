@@ -12,7 +12,6 @@ if (!Boolean(buildHook)) {
   buildHook = await netlify(buildHookEndpoint, {
     method: "POST",
     body: JSON.stringify({
-      value: process.env.DATABASE_URL,
       branch: process.env.GITHUB_HEAD_REF,
     }),
   });
