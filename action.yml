@@ -13,8 +13,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - shell: bash
-      run: export DATABASE_URL=${{ inputs.database_url }} CONTEXT=$CONTEXT
     - name: Set env vars
       shell: bash
       run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/env.mjs

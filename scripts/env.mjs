@@ -1,6 +1,6 @@
 import { netlify } from "./netlify.mjs";
 
-console.log("This is the context:", process.env.CONTEXT);
+console.log("--------", process.env, "-------");
 
 if (process.env.CONTEXT === "deploy-preview") {
   console.log("Setting deploy preview environment variable...");
@@ -11,7 +11,7 @@ if (process.env.CONTEXT === "deploy-preview") {
       method: "PATCH",
       body: JSON.stringify({
         context: "deploy-preview",
-        value: process.env.SNAPLET_DATABASE_URL,
+        value: process.env.DATABASE_URL,
       }),
     }
   );
