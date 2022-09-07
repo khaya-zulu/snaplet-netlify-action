@@ -7,14 +7,9 @@ const resp = await netlify(
   {
     method: "PATCH",
     body: JSON.stringify({
-      context: "branch-deploy",
-      value: [
-        {
-          context: "branch",
-          context_parameter: process.env.GITHUB_HEAD_REF,
-          value: process.env.DATABASE_URL,
-        },
-      ],
+      context: "branch",
+      context_parameter: process.env.GITHUB_HEAD_REF,
+      value: process.env.DATABASE_URL,
     }),
   }
 );
