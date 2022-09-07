@@ -7,7 +7,7 @@ const test = await netlify(
   {
     method: "PATCH",
     body: JSON.stringify({
-      context: "deploy-preview",
+      context: "branch-deploy",
       value: process.env.DATABASE_URL,
     }),
   }
