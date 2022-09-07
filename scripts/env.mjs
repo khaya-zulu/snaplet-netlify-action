@@ -1,6 +1,6 @@
 import { netlify } from "./netlify.mjs";
 
-console.log("--------", process.env, "-------");
+console.log("--------", process.env.CONTEXT, "-------");
 
 if (process.env.CONTEXT === "deploy-preview") {
   console.log("Setting deploy preview environment variable...");
