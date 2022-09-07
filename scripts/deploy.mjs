@@ -5,7 +5,7 @@ const buildHookEndpoint = `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks`;
 const buildHooks = await netlify(buildHookEndpoint, { method: "GET" });
 
 let buildHook = buildHooks.find(
-  (hook) => hook.branch === process.env.process.env.GITHUB_HEAD_REF
+  (hook) => hook.branch === process.env.GITHUB_HEAD_REF
 );
 
 if (!Boolean(buildHook)) {
