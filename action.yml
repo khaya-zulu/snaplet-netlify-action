@@ -20,8 +20,8 @@ runs:
   steps:
     - name: Run script
       shell: bash
-      env:
-        DATABASE_URL: ${{ inputs.database-url }}
+      # env:
+      #   DATABASE_URL: ${{ inputs.database-url }}
       run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/setup.mjs
 
     - if: ${{ inputs.delete == 'false' }}
