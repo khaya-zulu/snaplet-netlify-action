@@ -19,5 +19,6 @@ if (!Boolean(buildHook)) {
 }
 
 console.log("Creating deployment...");
-await fetch(buildHook.url, { method: "POST" });
+const resp = await fetch(buildHook.url, { method: "POST" });
+console.log({ resp });
 console.log("Deployment created.");
