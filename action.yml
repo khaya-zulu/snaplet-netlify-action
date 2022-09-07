@@ -13,9 +13,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - shell: bash
-      run: |
-        echo "CONTEXT: ${{ inputs.context }}"
     - name: Set env vars
       shell: bash
-      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/env.mjs
+      run: CONTEXT=${{ inputs.context }} node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/env.mjs
