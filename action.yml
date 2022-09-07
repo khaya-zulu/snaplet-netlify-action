@@ -5,17 +5,26 @@ author: Snaplet
 description: Inject instant db url in action
 
 inputs:
-  context:
-    description: Environment variables
+  delete:
+    description: Delete the preview related data on Netlify
+    required: false
+    type: boolean
+    default: false
+  database-url:
+    description: instant db url
     required: false
     type: string
 
 runs:
   using: composite
   steps:
-    - name: Set env vars
-      shell: bell
-      run: echo "CONTEXT=$${{ inputs.context }}" >> $CONTEXT
     - name: Run script
       shell: bash
-      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/env.mjs
+      env:
+        DATABASE_URL: ${{ inputs.database-url }}
+      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/setup.mjs
+
+    - if: ${{ inputs.delete == 'false' }}
+      name: Deploy
+      shell: bash
+      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/deploy.mjs
