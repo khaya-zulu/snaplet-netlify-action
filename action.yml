@@ -2,11 +2,11 @@ name: Netlify Preview Deployments
 
 author: Snaplet
 
-description: Trigger Netlify to stop Deployments
+description: Inject instant db url in action
 
 runs:
   using: composite
   steps:
-    - name: Deploy
+    - name: Setup
       shell: bash
-      run: "node -e 'process.exit(process.env.CONTEXT === `deploy-preview` ? 0 : 1)'"
+      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/env.mjs
