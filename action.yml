@@ -22,7 +22,6 @@ runs:
       shell: bash
       env:
         DATABASE_URL: ${{ inputs.database-url }}
-        NETLIFY_ACCOUNT_ID: $NETLIFY_ACCOUNT_ID
       run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/setup.mjs
 
     - if: ${{ inputs.delete == 'false' }}
