@@ -6,9 +6,6 @@ export const netlify = (url, options = {}) =>
       "Content-Type": "application/json",
     },
   }).then((res) => {
-    try {
-      return res.json();
-    } catch {
-      return null;
-    }
+    console.log({ res });
+    return res.json();
   });
