@@ -33,7 +33,7 @@ const envVar = envVars.find((item) => item.key === "DATABASE_URL")?.values;
 
 const branchedEnvVar = envVar.find(
   (item) =>
-    item.context_parameter === process.env.GITHUB_HEAD_REF &&
+    item?.context_parameter === process.env.GITHUB_HEAD_REF &&
     item.context === "branch"
 );
 
