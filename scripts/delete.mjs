@@ -11,7 +11,9 @@ const buildHook = buildHooks.find(
 );
 
 if (Boolean(buildHook)) {
-  console.log("Deleting build hook...");
+  console.log("Deleting build hook...", {
+    end: `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks/${buildHook.id}`,
+  });
 
   await netlify(
     `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks/${buildHook.id}`,

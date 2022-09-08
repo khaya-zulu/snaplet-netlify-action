@@ -18,7 +18,8 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Run script
+    - if: ${{ inputs.delete == 'false' }}
+      name: Run script
       shell: bash
       env:
         DATABASE_URL: ${{ inputs.database-url }}
