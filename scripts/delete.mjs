@@ -11,16 +11,25 @@ const buildHook = buildHooks.find(
 );
 
 if (Boolean(buildHook)) {
-  console.log("Deleting build hook...", {
-    end: `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks/${buildHook.id}`,
-  });
+  console.log("Deleting build hook...");
 
   console.log("entering");
 
-  const resp = await netlify(
-    `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks/${buildHook.id}`,
-    { method: "DELETE" }
-  );
+  try {
+    await netlify(
+      `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks/${buildHook.id}`,
+      {
+        method: "DELETE",
+      }
+    );
+  } catch (err) {
+    console.log("snaplet-err", err.message);
+  }
+
+  // const resp = await netlify(
+  //   `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks/${buildHook.id}`,
+  //   { method: "DELETE" }
+  // );
 
   console.log({ resp });
 
