@@ -5,9 +5,4 @@ export const netlify = (url, options = {}) =>
       Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`,
       "Content-Type": "application/json",
     },
-  }).then((res) => {
-    console.log({ res: res.body, url });
-    if (res.body) {
-      return res.json();
-    }
-  });
+  }).then((res) => res.body && res.json());
