@@ -15,10 +15,14 @@ if (Boolean(buildHook)) {
     end: `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks/${buildHook.id}`,
   });
 
-  await netlify(
+  console.log("entering");
+
+  const resp = await netlify(
     `/sites/${process.env.NETLIFY_SITE_ID}/build_hooks/${buildHook.id}`,
     { method: "DELETE" }
   );
+
+  console.log({ resp });
 
   console.log("Build hook deleted.");
 }
