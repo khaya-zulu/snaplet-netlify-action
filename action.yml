@@ -2,35 +2,11 @@ name: Netlify Preview Deployments
 
 author: Snaplet
 
-description: Inject instant db url in action
-
-inputs:
-  delete:
-    description: Delete the preview related data on Netlify
-    required: false
-    type: boolean
-    default: false
-  database-url:
-    description: instant db url
-    required: false
-    type: string
+description: Delete environment variables set by the Snaplet Netlify plugin
 
 runs:
   using: composite
   steps:
-    - if: ${{ inputs.delete == 'false' }}
-      name: Run script
-      shell: bash
-      env:
-        DATABASE_URL: ${{ inputs.database-url }}
-      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/setup.mjs
-
-    - if: ${{ inputs.delete == 'false' }}
-      name: Deploy
-      shell: bash
-      run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/deploy.mjs
-
-    - if: ${{ inputs.delete == 'true' }}
-      name: Delete
+    - name: Delete
       shell: bash
       run: node --experimental-fetch --no-warnings ${{ github.action_path }}/scripts/delete.mjs

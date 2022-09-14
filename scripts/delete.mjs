@@ -1,6 +1,5 @@
 import { netlify } from "./netlify.mjs";
 
-/** Delete env vars */
 const envVars = await netlify(
   `/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env?site=${process.env.NETLIFY_SITE_ID}`,
   { method: "GET" }
