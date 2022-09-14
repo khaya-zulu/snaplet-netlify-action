@@ -5,7 +5,7 @@ const envVars = await netlify(
   { method: "GET" }
 );
 
-console.log({ len: envVars.length });
+console.log({ envVars });
 
 const envVar = envVars?.find((item) => item.key === "DATABASE_URL")?.values;
 
