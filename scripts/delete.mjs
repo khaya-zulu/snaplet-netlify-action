@@ -5,13 +5,19 @@ const envVars = await netlify(
   { method: "GET" }
 );
 
+console.log({ len: envVars.length });
+
 const envVar = envVars?.find((item) => item.key === "DATABASE_URL")?.values;
+
+console.log({ envVar });
 
 const branchedEnvVar = envVar?.find(
   (item) =>
     item?.context_parameter === process.env.GITHUB_HEAD_REF &&
     item.context === "branch"
 );
+
+console.log({ branchedEnvVar });
 
 if (Boolean(branchedEnvVar)) {
   console.log("Deleting DATABASE_URL environment variable...");
