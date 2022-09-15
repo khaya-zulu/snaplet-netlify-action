@@ -5,11 +5,7 @@ const envVars = await netlify(
   { method: "GET" }
 );
 
-console.log({ envVars });
-
 const envVar = envVars?.find((item) => item.key === "DATABASE_URL")?.values;
-
-console.log({ envVar });
 
 const branchedEnvVar = envVar?.find(
   (item) =>
