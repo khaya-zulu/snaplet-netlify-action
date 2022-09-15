@@ -28,4 +28,8 @@ if (Boolean(branchedEnvVar)) {
   );
 
   console.log(`${process.env.DATABASE_ENV_VAR} environment variable deleted.`);
+} else {
+  console.log(
+    `Could not found find ${process.env.DATABASE_ENV_VAR} linked to branch: ${process.env.GITHUB_HEAD_REF}`
+  );
 }
