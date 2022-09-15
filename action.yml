@@ -4,11 +4,12 @@ author: Snaplet
 
 description: Delete environment variables set by the Snaplet Netlify plugin
 
-databaseEnvVar:
-  description: Environment variables name associated with database connection string
-  required: false
-  type: string
-  default: "DATABASE_URL"
+inputs:
+  databaseEnvVar:
+    description: Environment variables name associated with database connection string
+    required: false
+    type: string
+    default: "DATABASE_URL"
 
 runs:
   using: composite
