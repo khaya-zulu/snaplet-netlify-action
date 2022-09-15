@@ -1,13 +1,9 @@
 import { netlify } from "./netlify.mjs";
 
-console.log({ env: process.env.DATABASE_ENV_VAR });
-
 const envVars = await netlify(
   `/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env?site_id=${process.env.NETLIFY_SITE_ID}`,
   { method: "GET" }
 );
-
-console.log({ envVars });
 
 const envVar = envVars?.find(
   (item) => item.key === process.env.DATABASE_ENV_VAR
