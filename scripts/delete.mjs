@@ -21,7 +21,7 @@ if (Boolean(branchedEnvVar)) {
   );
 
   await netlify(
-    `/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env/${process.env.DATABASE_ENV_VAR}/value/${branchedEnv.id}?site_id=${process.env.NETLIFY_SITE_ID}`,
+    `/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env/${process.env.DATABASE_ENV_VAR}/value/${branchedEnvVar.id}?site_id=${process.env.NETLIFY_SITE_ID}`,
     {
       method: "DELETE",
     }
