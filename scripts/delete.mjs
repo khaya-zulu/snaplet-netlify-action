@@ -1,11 +1,13 @@
 import { netlify } from "./netlify.mjs";
 
 const envVars = await netlify(
-  `/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env?site=${process.env.NETLIFY_SITE_ID}`,
+  `/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env?site_id=${process.env.NETLIFY_SITE_ID}`,
   { method: "GET" }
 );
 
-const envVar = envVars?.find((item) => item.key === "DATABASE_URL")?.values;
+const envVar = envVars?.find(
+  (item) => item.key === process.env.DATABASE_ENV_VAR
+)?.values;
 
 const branchedEnvVar = envVar?.find(
   (item) =>
@@ -13,17 +15,17 @@ const branchedEnvVar = envVar?.find(
     item.context === "branch"
 );
 
-console.log({ branchedEnvVar });
-
 if (Boolean(branchedEnvVar)) {
-  console.log("Deleting DATABASE_URL environment variable...");
+  console.log(
+    `Deleting ${process.env.DATABASE_ENV_VAR} environment variable...`
+  );
 
   await netlify(
-    `/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env/DATABASE_URL/value/${branchedEnv.id}?site=${process.env.NETLIFY_SITE_ID}`,
+    `/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env/${process.env.DATABASE_ENV_VAR}/value/${branchedEnv.id}?site_id=${process.env.NETLIFY_SITE_ID}`,
     {
       method: "DELETE",
     }
   );
 
-  console.log("DATABASE_URL environment variable deleted.");
+  console.log(`${process.env.DATABASE_ENV_VAR} environment variable deleted.`);
 }
